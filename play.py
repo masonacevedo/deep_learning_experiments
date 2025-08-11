@@ -43,13 +43,16 @@ m = MyModel()
 loss_function = nn.MSELoss()
 optimizer = torch.optim.Adam(m.parameters(), lr=0.01)
 
+BATCH_SIZE = 100
 
 for epoch in range(0, EPOCHS):
-    for x,y in zip(x_vals, y_vals):
+    for i in range(0, len(x_vals), BATCH_SIZE):
         m.train()
-        prediction = m(x.reshape(1,1))
-        # print("x: ", x, "y: ", y, "prediction: ", prediction)
-        loss = loss_function(prediction, y)
+        batch_x = x_vals[i:i+BATCH_SIZE].reshape(-1,1)
+        batch_y = y_vals[i:i+BATCH_SIZE].reshape(-1,1)
+        predictions = m(batch_x)
+
+        loss = loss_function(predictions, batch_y)
         loss.backward()
         optimizer.step()
         optimizer.zero_grad()

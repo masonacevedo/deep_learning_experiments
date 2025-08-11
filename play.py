@@ -11,7 +11,7 @@ X_MAX = 5
 NUM_DATA_POINTS = 100
 NUM_LAYERS = 2
 LAYER_SIZE = 100
-EPOCHS = 1000
+EPOCHS = 3000
 
 x_vals = torch.tensor(np.linspace(X_MIN,X_MAX, NUM_DATA_POINTS), dtype=torch.float32)
 y_vals = function_to_predict(x_vals)
@@ -43,7 +43,7 @@ m = MyModel()
 loss_function = nn.MSELoss()
 optimizer = torch.optim.Adam(m.parameters(), lr=0.01)
 
-BATCH_SIZE = 100
+BATCH_SIZE = 1000
 
 for epoch in range(0, EPOCHS):
     for i in range(0, len(x_vals), BATCH_SIZE):

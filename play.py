@@ -58,15 +58,15 @@ for epoch in range(0, EPOCHS):
         optimizer.zero_grad()
     print("loss: ", loss.item())
 
-    plot_x = x_vals
-    plot_y = y_vals
-    # Set model to evaluation mode and detach gradients for plotting
-    m.eval()
-    with torch.no_grad():
-        plot_predictions = [m(torch.tensor(x, dtype=torch.float32).reshape(1,1)).detach().numpy().flatten()[0] for x in plot_x]
+plot_x = x_vals
+plot_y = y_vals
+# Set model to evaluation mode and detach gradients for plotting
+m.eval()
+with torch.no_grad():
+    plot_predictions = [m(torch.tensor(x, dtype=torch.float32).reshape(1,1)).detach().numpy().flatten()[0] for x in plot_x]
 
-    plt.plot(plot_x, plot_y, label="Actual", marker=".")
-    plt.plot(plot_x, plot_predictions, label="Predicted", marker=".")
-    plt.legend()
-    plt.title("Epoch: " + str(epoch))
-    plt.show()
+plt.plot(plot_x, plot_y, label="Actual", marker=".")
+plt.plot(plot_x, plot_predictions, label="Predicted", marker=".")
+plt.legend()
+plt.title("Epoch: " + str(epoch))
+plt.show()

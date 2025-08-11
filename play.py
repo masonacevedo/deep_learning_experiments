@@ -9,9 +9,9 @@ def function_to_predict(x):
 X_MIN = -5
 X_MAX = 5
 NUM_DATA_POINTS = 100
-NUM_LAYERS = 10
-LAYER_SIZE = 10
-EPOCHS = 10
+NUM_LAYERS = 5
+LAYER_SIZE = 5
+EPOCHS = 100
 
 x_vals = torch.tensor(np.linspace(X_MIN,X_MAX, NUM_DATA_POINTS), dtype=torch.float32)
 y_vals = function_to_predict(x_vals)

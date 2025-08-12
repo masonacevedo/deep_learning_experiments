@@ -56,7 +56,6 @@ for epoch in range(0, EPOCHS):
         loss.backward()
         optimizer.step()
         optimizer.zero_grad()
-    print("loss: ", loss.item())
 
 plot_x = x_vals
 plot_y = y_vals

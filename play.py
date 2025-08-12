@@ -36,9 +36,6 @@ class MyModel(nn.Module):
         return x
 
 m = MyModel()
-# prediction = m(x_vals[0].reshape(1,1))
-# print(prediction)
-
 
 loss_function = nn.MSELoss()
 optimizer = torch.optim.Adam(m.parameters(), lr=0.01)

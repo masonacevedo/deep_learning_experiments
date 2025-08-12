@@ -4,7 +4,7 @@ import torch.nn as nn
 import matplotlib.pyplot as plt
 
 def function_to_predict(x):
-    return x + np.sin(5*x)
+    return x + torch.sin(5*x)
 
 X_MIN = -5
 X_MAX = 5
@@ -62,7 +62,7 @@ plot_y = y_vals
 # Set model to evaluation mode and detach gradients for plotting
 m.eval()
 with torch.no_grad():
-    plot_predictions = [m(torch.tensor(x, dtype=torch.float32).reshape(1,1)).detach().numpy().flatten()[0] for x in plot_x]
+    plot_predictions = [m(x.reshape(1,1)).detach().numpy().flatten()[0] for x in plot_x]
 
 plt.plot(plot_x, plot_y, label="Actual", marker=".")
 plt.plot(plot_x, plot_predictions, label="Predicted", marker=".")
